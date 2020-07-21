@@ -1,0 +1,13 @@
+# Webブラウザ　Chrom のキャッシュクリア
+・Windows OS： ［Shift］＋［Ctrl］＋［Delete］キー
+・macOS： ［shift］＋［command］＋［delete」キー
+
+# static を　集める
+
+# settings.pyの最後尾などに、STATIC_ROOT変数を追記
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# collectstatic  の実行
+
+./manage.py collectstatic
+
