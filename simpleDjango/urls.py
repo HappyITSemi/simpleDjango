@@ -34,7 +34,7 @@ def about(request):
 
 
 urlpatterns = [
-                  path('/', home),
+                  path('', home),
                   path('about/', about),
                   path('posts/', include('posts.urls')),
                   path('admin/', admin.site.urls),

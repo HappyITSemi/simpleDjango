@@ -1,7 +1,7 @@
 # Description for Data Base
 # フィールド・リファレンス一覧
 # 参照
-# https://qiita.com/nachashin/items/f768f0d437e0042dd4b3
+# https://docs.djangoproject.com/ja/3.0/ref/models/fields/
 
 ＞Djangoのモデル定義ファイル(models.py等）内で row = models.XXXField(～） のように使用します
 
