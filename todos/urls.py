@@ -1,15 +1,8 @@
-#
-from django.shortcuts import render
 from django.urls import path
 from . import views
 
-
-def todo_index(request):
-    return render(request, 'todos/index.html', {})
-
-
 app_name = 'todos'
-
 urlpatterns = [
-    path('', todo_index, name='todo_index')
+    path('', views.TodoIndexView.as_view(), name='index'),
+    path('input_menu/', views.PostMenuView.as_view(), name='input_menu'),
 ]

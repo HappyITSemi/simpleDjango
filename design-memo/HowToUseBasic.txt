@@ -1,0 +1,43 @@
+### How to use basic view.
+
+インストールの注意点
+・言語の設定
+・DBの設定
+・DBの接続（DBがアップしていなければ、起動に失敗する）
+
+------------------------------------
+①アプリケーションの登録
+
+./manage.py startapp <アプリ名>
+
+(*)作成されたディレクトリ以下の　__init__.py がそのディレクトリがアプリケーションの印
+
+------------------------------------
+②プロジェクト名/settings.pyへの登録
+
+# Application definition
+
+-- 設定例　---------------------
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    'todos.apps.TodoConfig',
+    'posts.apps.PostsConfig',
+]
+
+------------------------------------
+
+■管理ユーザーを作成する¶
+adminサイトにログインできるユーザーを作成する必要があります。下記のコマンドを実行します:
+
+$ python manage.py createsuperuser
+
+user: root
+password: password
+------------------------------------
+

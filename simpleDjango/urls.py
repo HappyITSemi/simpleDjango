@@ -20,13 +20,16 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import path, include
 
+from todos import views
+
 
 def home(request):
     if request.method == 'GET':
         context = {
             'message': "Hello there",
         }
-    return render(request, 'index.html', context)
+    #    return render(request, 'index.html', context)
+    return HttpResponse("Home Page")
 
 
 def about(request):
@@ -34,9 +37,9 @@ def about(request):
 
 
 urlpatterns = [
-                  path('', home),
-                  path('about/', about),
-                  path('posts/', include('posts.urls')),
-                  path('admin/', admin.site.urls),
-                  path('todos/', include('todos.urls')),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', home),
+    path('about/', about),
+    path('admin/', admin.site.urls),
+    path('todos/', include('todos.urls')),
+    path('posts/', include('posts.urls')),
+]

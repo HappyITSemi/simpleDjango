@@ -8,9 +8,12 @@ from django import forms
 from .models import TodosLists
 
 
-class TodosForm(forms.ModelForm):
+class TodoInputForm(forms.ModelForm):
     class Meta:
         model = TodosLists
-        fields = ('name', 'description', 'due_date', 'created_at', 'updated_at')
+        fields = ['name', 'description', 'due_date', 'created_at', 'updated_at']
+
 
 # widgetsで各フィールドのデザインを指定する
+
+form = TodoInputForm()

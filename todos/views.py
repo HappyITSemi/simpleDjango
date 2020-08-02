@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
-# Create your views here.
+# *args: 複数の引数をタプルとして受け取る
+# **kwargs: 複数のキーワード引数を辞書として受け取る
+#
+class TodoIndexView(TemplateView):
+    template_name = "index.html"
 
-def todo_index(request):
-    return render(request, 'index.html', {})
+
+class PostMenuView(TemplateView):
+    template_name = "input_menu.html"

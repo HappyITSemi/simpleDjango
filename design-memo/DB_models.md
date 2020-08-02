@@ -1,7 +1,13 @@
-# Description for Data Base
-# フィールド・リファレンス一覧
-# 参照
-# https://docs.djangoproject.com/ja/3.0/ref/models/fields/
+### Description for Data Base
+### フィールド・リファレンス一覧
+### 参照
+##### https://docs.djangoproject.com/ja/3.0/ref/models/fields/
+
+select * from public.xxx_table;
+
+insert into public.xxx_table(id, name) values(1, 'namae-1')
+
+update
 
 ＞Djangoのモデル定義ファイル(models.py等）内で row = models.XXXField(～） のように使用します
 

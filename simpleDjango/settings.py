@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'posts',
-    'todos',
+
+    'todos.apps.TodosConfig',
+    'posts.apps.PostsConfig',
 ]
 
 MIDDLEWARE = [
@@ -57,6 +58,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates')]
+        # 'DIRS': []
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -128,9 +130,48 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/pics/'
-MEDIA_ROOT = BASE_DIR
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+# ロギング設定
+LOGGING = {
+    'version': 1,  # 1固定
+    'disable_existing_loggers': False,
+
+    # ロガーの設定
+    'loggers': {
+        # Djangoが利用するロガー
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+        },
+        # Todosアプリケーションが利用するロガー
+        'todos': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+    },
+
+    # ハンドラの設定
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'dev'
+        },
+    },
+
+    # フォーマッタの設定
+    'formatters': {
+        'dev': {
+            'format': '\t'.join([
+                '%(asctime)s',
+                '[%(levelname)s]',
+                '%(pathname)s(Line:%(lineno)d)',
+                '%(message)s'
+            ])
+        },
+    }
+}

@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 # from django.db.models import AutoField, CharField, DateField
 
-class TodosLists(models.Model):
+class TodoList(models.Model):
     # todolist_id = models.AutoField(Primary_key=True)
     name = models.CharField(
         max_length=64,
