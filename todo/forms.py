@@ -5,15 +5,14 @@
 #
 
 from django import forms
-from .models import TodosLists
+from .models import Todo
 
 
-class TodoInputForm(forms.ModelForm):
+class TodoForm(forms.ModelForm):
     class Meta:
-        model = TodosLists
-        fields = ['name', 'description', 'due_date', 'created_at', 'updated_at']
+        model = Todo
+        fields = ['name', 'description', 'due_date', 'created_at', 'updated_at', 'todo_category_id']
 
 
 # widgetsで各フィールドのデザインを指定する
 
-form = TodoInputForm()

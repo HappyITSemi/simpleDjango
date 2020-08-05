@@ -11,6 +11,8 @@ update
 
 ＞Djangoのモデル定義ファイル(models.py等）内で row = models.XXXField(～） のように使用します
 
+
+#####
 |フィールド|説明|XXXXX|
 |---|---|---|
 |AutoField|xxx|xxx|
@@ -21,8 +23,7 @@ update
 |DateTimeField|datetime.datetimeインスタンスによって表される日付と時刻|xxx|
 |DurationField|時刻の期間を保持するフィールドで、Pythonのtimedeltaによってモデル化|xxx|
 
-
-
+#####
 |フィールドの型|	説明|
 |----|----|
 |AutoField|	利用可能な ID に応じて、自動的にインクリメントする IntegerField です。通常は直接使う必要はありません; 指定しない場合は、主キーのフィールドが自動的にモデルに追加されます。Automatic primary key fields も参照してください。|

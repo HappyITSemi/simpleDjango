@@ -19,8 +19,9 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import path, include
+from django.views.generic import RedirectView
 
-from todos import views
+from todo import views
 
 
 def home(request):
@@ -37,9 +38,9 @@ def about(request):
 
 
 urlpatterns = [
-    path('', home),
+    path('', RedirectView.as_view(url='/todo/')),
+    # path('', home),
     path('about/', about),
     path('admin/', admin.site.urls),
-    path('todos/', include('todos.urls')),
-    path('posts/', include('posts.urls')),
+    path('todo/', include('todo.urls')),
 ]
