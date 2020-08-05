@@ -15,10 +15,6 @@ class TodoIndexView(generic.TemplateView):
     template_name = "index.html"  # テンプレート名のデフォルトは モデル名_index.html が使われる
 
 
-class PostMenuView(generic.TemplateView):
-    template_name = "input_menu.html"
-
-
 class TodoListView(ListView):  # テンプレート名のデフォルトは モデル名_list.html が使われる
     template_name = "list.html"
     model = Todo

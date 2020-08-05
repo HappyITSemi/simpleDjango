@@ -11,5 +11,4 @@ urlpatterns = [
     path('update/<int:id>', views.TodoUpdateView.as_view(), name='update'),
     path('delete/<int:pk>', views.TodoDeleteView.as_view(), name='delete'),
 
-    path('input_menu/', views.PostMenuView.as_view(), name='input_menu'),
 ]
