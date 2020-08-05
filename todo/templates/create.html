@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}ToDoCreate{% endblock %}
+
+{% block todo_index %}
+    <a href="{% url 'todo:index' %}" class="list-group-item list-group-item-action">
+        <img src="/static/bootstrap-icons/icons/layout-text-window-reverse.svg" alt="" width="24"
+             height="24"/>
+        todo Index
+    </a>
+{% endblock %}
+
+{% block todo_list %}
+    <a href="{% url 'todo:list' %}" class="list-group-item list-group-item-action">
+        <img src="{% static 'bootstrap-icons/icons/shop.svg' %}" alt="" width="24" height="24"/>
+        　todo List
+    </a>
+{% endblock %}
+
+{% block todo_detail %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="24" height="24"/>
+        todo detail
+    </a>
+{% endblock %}
+
+{% block todo_create %}
+    <a href="{% url 'todo:create' %}" class="list-group-item list-group-item-action active">
+        <img src="{% static 'bootstrap-icons/icons/person-plus.svg' %}" alt="" width="24" height="24"/>
+        　todo create
+    </a>
+{% endblock %}
+
+{% block todo_update %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <img src="{% static 'bootstrap-icons/icons/envelope.svg' %}" alt="" width="24" height="24"/>
+        todo update
+    </a>
+{% endblock %}
+
+{% block center %}
+    <div class="col-lg-7 border order-2">
+        下のCreate　センター・コンテンツ<br/>
+
+    </div>
+{% endblock %}
