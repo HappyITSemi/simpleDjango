@@ -19,6 +19,7 @@ class TodoListView(ListView):  # テンプレート名のデフォルトは モ�
     template_name = "list.html"
     model = Todo
     paginate_by = 10
+    queryset = Todo.objects.order_by('pk')
 
 
 class TodoDetailView(DetailView):

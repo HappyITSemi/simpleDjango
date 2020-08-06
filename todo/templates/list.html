@@ -18,7 +18,7 @@
 {% endblock %}
 
 {% block todo_detail %}
-    <a href="#" class="list-group-item list-group-item-action">
+    <a href="{% url 'todo:detail' 1 %}" class="list-group-item list-group-item-action">
         <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="24" height="24"/>
         　詳細
     </a>
@@ -67,8 +67,6 @@
             </tbody>
         </table>
         <div>　</div>
-        フォーム<br/>
-        {{ form }}
 
 
     </div>
