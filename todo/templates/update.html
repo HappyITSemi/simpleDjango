@@ -40,7 +40,15 @@
 
 {% block center %}
     <div class="col-lg-7 border order-2">
-        TodoList - 下のtodoLIST　センター・コンテンツ<br/>
+        <form method="post">
+            {% csrf_token %}
+
+            <table>
+                {{ form.as_table }}
+            </table>
+
+            <button type="submit">保存</button>
+        </form>
 
 
     </div>

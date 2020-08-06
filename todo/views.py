@@ -31,7 +31,7 @@ class TodoCreateView(CreateView):
     model = Todo
 
     form_class = TodoForm
-    success_url = reverse_lazy('list')
+    success_url = reverse_lazy('list.html')
 
     def form_valid(self, form):
         result = super().form_valid(form)
@@ -40,9 +40,10 @@ class TodoCreateView(CreateView):
 
 
 class TodoUpdateView(UpdateView):
+    template_name = "update.html"
     model = Todo
     form_class = TodoForm
-
+    # success_url = "list.html"
     success_url = reverse_lazy('list')
 
     def form_valid(self, form):
@@ -55,8 +56,9 @@ class TodoUpdateView(UpdateView):
 class TodoDeleteView(DeleteView):
     model = Todo
     form_class = TodoForm
+    success_url = "list.html"
 
-    success_url = reverse_lazy('list')
+    # success_url = reverse_lazy('list')
 
     def delete(self, request, *args, **kwargs):
         result = super().delete(request, *args, **kwargs)
