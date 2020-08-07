@@ -4,51 +4,133 @@
 
 {% block todo_index %}
     <a href="{% url 'todo:index' %}" class="list-group-item list-group-item-action">
-        <img src="/static/bootstrap-icons/icons/layout-text-window-reverse.svg" alt="" width="24"
-             height="24"/>
-        todo Index
+        <img src="/static/bootstrap-icons/icons/layout-text-window-reverse.svg" alt="" width="18" height="18"/>
+        　ダッシュボード
     </a>
 {% endblock %}
 
 {% block todo_list %}
-    <a href="{% url 'todo:list' %}" class="list-group-item list-group-item-action">
-        <img src="{% static 'bootstrap-icons/icons/shop.svg' %}" alt="" width="24" height="24"/>
-        　todo List
+    <a href="{% url 'todo:list' %}" class="list-group-item list-group-item-action active">
+        <img src="{% static 'bootstrap-icons/icons/shop.svg' %}" alt="" width="18" height="18"/>
+        　Todo 一覧・更新
     </a>
 {% endblock %}
 
-{% block todo_detail %}
+{% block new_app %}
     <a href="#" class="list-group-item list-group-item-action">
-        <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="24" height="24"/>
-        todo detail
+        <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="18" height="18"/>
+        　新アプリ
     </a>
 {% endblock %}
 
-{% block todo_create %}
+{% block customer %}
     <a href="{% url 'todo:create' %}" class="list-group-item list-group-item-action">
-        <img src="{% static 'bootstrap-icons/icons/person-plus.svg' %}" alt="" width="24" height="24"/>
-        　todo create
+        <img src="{% static 'bootstrap-icons/icons/person-plus.svg' %}" alt="" width="18" height="18"/>
+        　顧客管理
     </a>
 {% endblock %}
 
-{% block todo_update %}
-    <a href="#" class="list-group-item list-group-item-action active">
-        <img src="{% static 'bootstrap-icons/icons/envelope.svg' %}" alt="" width="24" height="24"/>
-        todo update
+{% block e_mail %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <img src="{% static 'bootstrap-icons/icons/envelope.svg' %}" alt="" width="18" height="18"/>
+        　メール
     </a>
 {% endblock %}
 
 {% block center %}
+
     <div class="col-lg-7 border order-2">
-        <form method="post">
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+        <form action="{% url 'todo:update' object.pk %}" method="post">
             {% csrf_token %}
+            <div>
+                <h7>■更新メニュー</h7>
+            </div>
+            <table class="table table-striped table-sm table-bordered">
+                <tr>
+                    <th>pk</th>
+                    <td>{{ object.pk }}</td>
+                </tr>
+                <tr>
+                    <th>Todo名</th>
+                    <td>
+                        <input type="text" class="form-control" name="name" id="id_name"
+                               value="{{ object.name }}" maxlength="64" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>カテゴリー</th>
+                    <td>
+                        <select name="todo_category_id" required id="id_todo_category_id" class="form-select">
+                            <option selected>{{ object.todo_category_id }}</option>
+                            {% for category in categories %}
+                                <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>内容</th>
+                    <td>
+                        <input type="text" class="form-control" name="description" id="id_description"
+                               value="{{ object.description }}" maxlength="128" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>期日</th>
+                    <td>
+                        <input type="date" class="form-control" name="due_date" id="id_due_date"
+                               value="{{ object.due_date }}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>作成日</th>
+                    <td>
+                        <input type="datetime-local" class="form-control" name="created_at" id="id_created_at"
+                               value="{{ object.created_at }}" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>更新日</th>
+                    <td>
+                        <input type="datetime-local" class="form-control" name="updated_at" id="id_updated_at"
+                               value="{{ object.updated_at }}">
+                    </td>
+                </tr>
 
-            <table>
-                {{ form.as_table }}
             </table>
-
-            <button type="submit">保存</button>
+            <input class="btn btn-primary" type="submit" value="保存">
         </form>
+        <hr>
+
+        <h7>■更新前データ</h7>
+        <table class="table table-striped table-sm table-bordered">
+            <thead>
+            <tr>
+                <th>pk</th>
+                <th>Todo名</th>
+                <th>カテゴリー</th>
+                <th>内容</th>
+                <th>期日</th>
+                <th>作成日</th>
+                <th>更新日</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>{{ object.pk }}</td>
+                <td>{{ object.name }}</td>
+                <td>{{ object.todo_category_id }}</td>
+                <td>{{ object.description }}</td>
+                <td>{{ object.due_date|date:"Y-m-j" }}</td>
+                <td>{{ object.created_at|date:"Y-m-j" }}</td>
+                <td>{{ object.updated_at|date:"Y-m-j H:i:s" }}</td>
+            </tr>
+            </tbody>
+
+        </table>
 
 
     </div>

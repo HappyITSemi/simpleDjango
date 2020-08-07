@@ -21,8 +21,6 @@ from django.shortcuts import render
 from django.urls import path, include
 from django.views.generic import RedirectView
 
-from todo import views
-
 
 def home(request):
     if request.method == 'GET':
@@ -39,7 +37,6 @@ def about(request):
 
 urlpatterns = [
     path('', RedirectView.as_view(url='/todo/')),
-    # path('', home),
     path('about/', about),
     path('admin/', admin.site.urls),
     path('todo/', include('todo.urls')),

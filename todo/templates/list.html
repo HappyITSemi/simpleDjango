@@ -4,43 +4,46 @@
 
 {% block todo_index %}
     <a href="{% url 'todo:index' %}" class="list-group-item list-group-item-action">
-        <img src="/static/bootstrap-icons/icons/layout-text-window-reverse.svg" alt="" width="24"
-             height="24"/>
-        ダッシュボード
+        <img src="/static/bootstrap-icons/icons/layout-text-window-reverse.svg" alt="" width="18" height="18"/>
+        　ダッシュボード
     </a>
 {% endblock %}
 
 {% block todo_list %}
     <a href="{% url 'todo:list' %}" class="list-group-item list-group-item-action active">
-        <img src="{% static 'bootstrap-icons/icons/shop.svg' %}" alt="" width="24" height="24"/>
-        　一覧
+        <img src="{% static 'bootstrap-icons/icons/shop.svg' %}" alt="" width="18" height="18"/>
+        　Todo 一覧・更新
     </a>
 {% endblock %}
 
-{% block todo_detail %}
-    <a href="{% url 'todo:detail' 1 %}" class="list-group-item list-group-item-action">
-        <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="24" height="24"/>
-        　詳細
+{% block new_app %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="18" height="18"/>
+        　新アプリ
     </a>
 {% endblock %}
 
-{% block todo_create %}
+{% block customer %}
     <a href="{% url 'todo:create' %}" class="list-group-item list-group-item-action">
-        <img src="{% static 'bootstrap-icons/icons/person-plus.svg' %}" alt="" width="24" height="24"/>
-        　新規
+        <img src="{% static 'bootstrap-icons/icons/person-plus.svg' %}" alt="" width="18" height="18"/>
+        　顧客管理
     </a>
 {% endblock %}
 
-{% block todo_update %}
-    <a href="{% url 'todo:update' 1 %}" class="list-group-item list-group-item-action">
-        <img src="{% static 'bootstrap-icons/icons/envelope.svg' %}" alt="" width="24" height="24"/>
-        　更新
+{% block e_mail %}
+    <a href="#" class="list-group-item list-group-item-action">
+        <img src="{% static 'bootstrap-icons/icons/envelope.svg' %}" alt="" width="18" height="18"/>
+        　メール
     </a>
 {% endblock %}
 
 {% block center %}
     <div class="col-lg-7 border order-2">
-        ■Todoリスト<br/>
+        <h5>■Todoリスト</h5>
+        <div>
+            <a href="{% url 'todo:create' %}" class="btn btn-outline-primary btn-sm">新規登録</a>
+        </div>
+        <hr>
         <table class="table table-striped table-hover table-bordered">
             <thead>
             <tr>
@@ -50,6 +53,7 @@
                 <th>内容</th>
                 <th>作成日</th>
                 <th>更新日時</th>
+                <th>詳細</th>
                 <th>編集</th>
             </tr>
             </thead>
@@ -58,20 +62,41 @@
             {% for o in object_list %}
                 <tr>
                     <td>{{ o.pk }}</td>
-                    <td><a href="{% url 'todo:detail' o.pk %}">{{ o.name }}</a></td>
+                    <td>{{ o.name }}</td>
                     <td>{{ o.todo_category_id }}</td>
                     <td>{{ o.description }}</td>
                     <td>{{ o.created_at|date:"Y-m-j" }}</td>
                     <td>{{ o.updated_at|date:"Y-m-j H:i:s" }}</td>
                     <td>
-                        <a href="#" class="btn btn-outline-primary">修正</a>
+                        <a href="{% url 'todo:detail' o.pk %}" class="btn btn-outline-primary btn-sm">詳細</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'todo:update' o.pk %}" class="btn btn-outline-primary btn-sm">修正</a>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
-        <div>　</div>
-
+        <div>
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <span class="page-link">Previous</span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active" aria-current="page">
+                      <span class="page-link">
+                        2
+                        <span class="sr-only">(current)</span>
+                      </span>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
 
     </div>
 {% endblock %}

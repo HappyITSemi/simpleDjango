@@ -11,7 +11,7 @@
 ./manage.py makemigrations
 
 # ----------------------------
-③
+③マイグレーション
 
 ./manage.py migrate
 
@@ -23,4 +23,15 @@
 # -------------------------------------------------------------
 ■ app1の Migrations履歴を削除
 ./manage.py migrate --fake app1 zero
+
+# ---------------------
+☆ 必要なライブラリー ☆
+# ---------------------
+データベース  バージョン
+PostgreSQL    psycopg2
+MySQL        mysqlclient
+Oracle        cx_Oracle
+SQLServer    django-pyodbc-azure
+
+# ---------------------
 

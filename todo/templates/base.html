@@ -22,41 +22,43 @@
         <div>　</div>
         <div class="col-lg-2 order-1">
             <div class="list-group">
+
                 {% block todo_index %}
-                    <a href="{% url 'todo:index' %}" class="list-group-item list-group-item-action active">
-                        <img src="/static/bootstrap-icons/icons/layout-text-window-reverse.svg" alt="" width="24"
-                             height="24"/>
-                        ダッシュボード
+                    <a href="{% url 'todo:index' %}" class="list-group-item list-group-item-action">
+                        <img src="/static/bootstrap-icons/icons/layout-text-window-reverse.svg" alt="" width="18"
+                             height="18"/>
+                        　ダッシュボード
                     </a>
                 {% endblock %}
 
                 {% block todo_list %}
                     <a href="{% url 'todo:list' %}" class="list-group-item list-group-item-action">
-                        <img src="{% static 'bootstrap-icons/icons/shop.svg' %}" alt="" width="24" height="24"/>
-                        　　一覧
+                        <img src="{% static 'bootstrap-icons/icons/shop.svg' %}" alt="" width="18" height="18"/>
+                        　Todo 一覧・更新
                     </a>
                 {% endblock %}
 
-                {% block todo_detail %}
+                {% block new_app %}
                     <a href="#" class="list-group-item list-group-item-action">
-                        <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="24" height="24"/>
-                        　詳細
+                        <img src="{% static 'bootstrap-icons/icons/diagram-3.svg' %}" alt="" width="18" height="18"/>
+                        　新アプリ
                     </a>
                 {% endblock %}
 
-                {% block todo_create %}
+                {% block customer %}
                     <a href="{% url 'todo:create' %}" class="list-group-item list-group-item-action">
-                        <img src="{% static 'bootstrap-icons/icons/person-plus.svg' %}" alt="" width="24" height="24"/>
-                        　　新規
+                        <img src="{% static 'bootstrap-icons/icons/person-plus.svg' %}" alt="" width="18" height="18"/>
+                        　顧客管理
                     </a>
                 {% endblock %}
 
-                {% block todo_update %}
+                {% block e_mail %}
                     <a href="#" class="list-group-item list-group-item-action">
-                        <img src="{% static 'bootstrap-icons/icons/envelope.svg' %}" alt="" width="24" height="24"/>
-                        　更新
+                        <img src="{% static 'bootstrap-icons/icons/envelope.svg' %}" alt="" width="18" height="18"/>
+                        　メール
                     </a>
                 {% endblock %}
+
             </div>
         </div>
 
@@ -66,6 +68,7 @@
             </div>
         {% endblock %}
 
+        {% block right_menu %}
         <div class="col-lg-3 order-3">
             <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
@@ -87,6 +90,8 @@
                 </ul>
             </div>
         </div>
+        {% endblock %}
+
     </div>
 </div>
 <div>　
@@ -94,7 +99,7 @@
 <div class="border g-2">
     <div class="border">
         <div class="row justify-content-md-center">
-            (C) Happy IT Semi
+            &copy Happy IT Semi
         </div>
     </div>
 </div>
