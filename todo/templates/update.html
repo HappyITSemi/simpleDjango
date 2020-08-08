@@ -60,7 +60,21 @@
                     </td>
                 </tr>
                 <tr>
-                    <th>カテゴリー</th>
+                    <th>内容</th>
+                    <td>
+                        <input type="text" class="form-control" name="description" id="id_description"
+                               value="{{ object.description }}" maxlength="128">
+                    </td>
+                </tr>
+                <tr>
+                    <th>期日 {{ object.due_date|date:"Y-m-j" }}</th>
+                    <td>
+                        <input type="date" class="form-control" name="due_date" id="id_due_date"
+                               value="{{ object.due_date|date:"Y/m/j" }}">
+                    </td>
+                </tr>
+                <tr>
+                    <th>カテゴリー{{ object.todo_category_id }}</th>
                     <td>
                         <select name="todo_category_id" required id="id_todo_category_id" class="form-select">
                             <option selected>{{ object.todo_category_id }}</option>
@@ -70,38 +84,10 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <th>内容</th>
-                    <td>
-                        <input type="text" class="form-control" name="description" id="id_description"
-                               value="{{ object.description }}" maxlength="128" required>
-                    </td>
-                </tr>
-                <tr>
-                    <th>期日</th>
-                    <td>
-                        <input type="date" class="form-control" name="due_date" id="id_due_date"
-                               value="{{ object.due_date }}" required>
-                    </td>
-                </tr>
-                <tr>
-                    <th>作成日</th>
-                    <td>
-                        <input type="datetime-local" class="form-control" name="created_at" id="id_created_at"
-                               value="{{ object.created_at }}" required>
-                    </td>
-                </tr>
-                <tr>
-                    <th>更新日</th>
-                    <td>
-                        <input type="datetime-local" class="form-control" name="updated_at" id="id_updated_at"
-                               value="{{ object.updated_at }}">
-                    </td>
-                </tr>
-
             </table>
-            <input class="btn btn-primary" type="submit" value="保存">
+            <input type="submit" value="保存">
         </form>
+
         <hr>
 
         <h7>■更新前データ</h7>

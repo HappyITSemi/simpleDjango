@@ -9,7 +9,7 @@ from .models import Todo
 class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ['name', 'description', 'due_date', 'created_at', 'updated_at', 'todo_category_id']
+        fields = ['name', 'description', 'due_date', 'todo_category_id']
 
 
 # widgetsで各フィールドのデザインを指定する

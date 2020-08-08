@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -5,11 +7,6 @@ class TodoCategory(models.Model):
     name = models.CharField(
         max_length=24,
         verbose_name='カテゴリー名',
-    )
-    due = models.DateField(
-        blank=True,
-        verbose_name='期限日',
-        null=True,
     )
 
     class Meta:
@@ -21,36 +18,35 @@ class TodoCategory(models.Model):
         return self.name
 
 
+# For DateField: default=date.today - from datetime.date.today()
+# For DateTimeField: default=timezone.now - from django.utils.timezone.now()
+
+
 class Todo(models.Model):
     # id = models.AutoField(Primary_key=True)
     name = models.CharField(
         max_length=64,
-        verbose_name='Todoタイトル名',
-        help_text='Todoタイトルを入力してください',
     )
     description = models.CharField(
         max_length=128,
-        verbose_name='内容',
-        help_text='Todo内容を入力してください',
+        blank=True,
     )
     due_date = models.DateField(
-        verbose_name='期限日',
-        help_text='期日を入力してください',
         blank=True,
     )
     created_at = models.DateTimeField(
-        auto_now_add=False,
+        auto_now=True,
         verbose_name='登録日時',
     )
     updated_at = models.DateTimeField(
-        auto_now=False,
+        auto_now_add=True,
         verbose_name='更新日時',
-        blank=True,
     )
-    todo_category_id = models.OneToOneField(TodoCategory, models.DO_NOTHING, db_column='id', primary_key=True)
+    todo_category_id = models.ForeignKey('TodoCategory', models.DO_NOTHING, db_column='todo_category_id ', blank=True,
+                                         null=True)
 
     class Meta:
-        managed = True  # 管理対象とする
+        managed = False  # 管理対象外とする
         verbose_name_plural = 'Todo'
         db_table = 'todo'
 

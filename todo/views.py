@@ -1,4 +1,6 @@
 from django.contrib import messages
+from django.core.paginator import Paginator
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -31,6 +33,14 @@ class TodoListView(ListView):  # テンプレート名のデフォルトは モ�
     paginate_by = 10
     queryset = Todo.objects.order_by('pk')
 
+    def listing(self, request):
+        to_list = Todo.objects.all()
+        paginator = Paginator(to_list, 10)  # Show 10 todo per page.
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'list.html', {'page_obj': page_obj})
+
 
 class TodoDetailView(DetailView):
     model = Todo
@@ -42,6 +52,12 @@ class TodoCreateView(CreateView):
     template_name = "create.html"
     form_class = TodoForm
     success_url = reverse_lazy('todo:list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)  # はじめに継承元のメソッドを呼び出す
+        todo_category = TodoCategory.objects.values('id', 'name')
+        context['categories'] = todo_category
+        return context
 
     def form_valid(self, form):
         result = super().form_valid(form)
