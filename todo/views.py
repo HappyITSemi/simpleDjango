@@ -35,11 +35,11 @@ class TodoListView(ListView):  # テンプレート名のデフォルトは モ�
 
     def listing(self, request):
         to_list = Todo.objects.all()
-        paginator = Paginator(to_list, 10)  # Show 10 todo per page.
+        paginator = Paginator(to_list, 10)  # Show 10 page_obj.number
 
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
-        return render(request, 'list.html', {'page_obj': page_obj})
+        return render(request, 'list.html', {'page_obj': page_obj })
 
 
 class TodoDetailView(DetailView):
