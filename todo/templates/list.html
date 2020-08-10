@@ -80,55 +80,59 @@
             </tbody>
         </table>
         <div>
-            <nav aria-label="...">
+            <nav>
                 <ul class="pagination">
                     {% if page_obj.has_previous %}
                         <li class="page-item">
                             <span class="page-link">
-                                <a href="?page={{ page_obj.previous_page_number }}">前</a>
-                            </span>
-
-                        <li class="page-item active">
-                            <span class="page-link">
-                                {{ page_obj.number }}
+                                <a href="?page={{ page_obj.previous_page_number }}">前
+                                </a>
                             </span>
                         </li>
-                        <li class="page-item" aria-current="page">
-                          <span class="page-link">
-                              {{ page_obj.number|add:"1" }}
-                            <span class="sr-only">(current)</span>
-                          </span>
+                        <li class="page-item">
+                            <span class="page-link">
+                                <a href="?page={{ page_obj.previous_page_number }}">
+                                    {{ page_obj.previous_page_number }}
+                                </a>
+                            </span>
+                        </li>
+                        <li class="page-item active">
+                            <span class="page-link">
+                                  {{ page_obj.number }}
+                            </span>
                         </li>
                     {% else %}
-                        <li class="page-item active">
-                            <span class="page-link">前</span>
-                        </li>
+                        <!-- --------------------------------------------- -->
                         <li class="page-item">
-                            <span class="page-link">
-                                {{ page_obj.number }}
-                            </span>
+                            <span class="page-link" disabled>前</span>
                         </li>
-
-                        <li class="page-item disable" aria-current="page">
-                          <span class="page-link">
-                              {{ page_obj.number|add:"1" }}
-                            <span class="sr-only">(current)</span>
+                        <li class="page-item active">
+                          <span class="page-link active">
+                              {{ page_obj.number }}
                           </span>
                         </li>
                     {% endif %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.number|add:'2' }}">
-                            {{ page_obj.number|add:"2" }}
-                        </a>
-                    </li>
+                    <!-- --------------------------------------------- -->
                     {% if page_obj.has_next %}
                         <li class="page-item">
-                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-                            {% else %}
+                            <span class="page-link">
+                                <a href="?page={{ page_obj.next_page_number }}">
+                                    {{ page_obj.next_page_number }}
+                                </a>
+                            </span>
+                        </li>
                         <li class="page-item">
-                        Last
+                        <span class="page-link">
+                            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                        </span>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                          <span class="page-link">
+                              Last
+                          </span>
+                        </li>
                     {% endif %}
-                    </li>
                     <span>　[頁：{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}]</span>
                 </ul>
             </nav>
