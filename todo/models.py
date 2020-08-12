@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.db import models
 
 
@@ -33,6 +31,7 @@ class Todo(models.Model):
     )
     due_date = models.DateField(
         blank=True,
+        verbose_name='期日',
     )
     created_at = models.DateTimeField(
         auto_now=True,
@@ -52,3 +51,4 @@ class Todo(models.Model):
 
     def __str__(self):
         return self.name
+

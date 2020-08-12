@@ -128,9 +128,9 @@
                         </li>
                     {% else %}
                         <li class="page-item">
-                          <span class="page-link">
-                              Last
-                          </span>
+                        <span class="page-link">
+                            <a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                        </span>
                         </li>
                     {% endif %}
                     <span>　[頁：{{ page_obj.number }}/{{ page_obj.paginator.num_pages }}]</span>

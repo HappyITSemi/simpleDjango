@@ -47,10 +47,10 @@
 {% block center %}
     <div class="col-lg-7 border order-2">
         <br/>
-
+        Todoは {{ todos.count }} 件
         <div class="card card-default">
             <ul class="list-group list-group-flush">
-                {% for o in object_list %}
+                {% for o in todos %}
                     <li class="list-group-item">
                         <a href="{% url 'todo:detail' o.pk %}">{{ o.name }}</a>
                     </li>

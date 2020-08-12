@@ -3,7 +3,7 @@
 #
 
 from django import forms
-from .models import Todo
+from .models import Todo, TodoCategory
 
 
 class TodoForm(forms.ModelForm):
@@ -14,3 +14,7 @@ class TodoForm(forms.ModelForm):
 
 # widgetsで各フィールドのデザインを指定する
 
+class TodoCategory(forms.ModelForm):
+    class Meta:
+        model = TodoCategory
+        fields = ['name']

@@ -23,6 +23,9 @@ class TodoIndexView(generic.TemplateView):
         todo_category = TodoCategory.objects.values('id', 'name')
         context['categories'] = todo_category
 
+        todos = Todo.objects.all().order_by('pk')
+        context['todos'] = todos
+
         return context
 
 

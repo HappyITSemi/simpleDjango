@@ -1,0 +1,51 @@
+==== 2 Forms
+
+===== ・One is Forms. For Search-Forms etc.
+
+===== ・The other is ModeForms.
+
+== Field クラスに指定できるフィールドオプション （⼀部）
+
+|====
+|フィールドオプション      |説明|
+|verbose_name        |フィールド名|
+|モデル定義のフィールド一覧 | |
+|Field(options)        |説明 |
+|CharField           |文字列  |デフォルトフォームウィジェット:TextInput
+|TextField           |多量のテキスト |デフォルトフォームウィジェット:Textarea
+|AutoField           |自動インクリメント整数|
+|BigAutoField        |自動インクリメント整数64ビット|
+|SmallIntegerField   |整数16ビット|
+|IntegerField        |整数 |
+|BigIntegerField     |整数64ビット|
+|PositiveSmallIntegerField |   0か正の整数|
+|PositiveIntegerField  |0か正の整数|
+|DecimalField        |max_digits=None, decimal_places=None |   固定精度の小数    max_digits:最大桁数
+|decimal_places      |保持される小数点以下の位の数|
+|FloatField            |浮動小数点数 |                               Python の float 型
+|BooleanField        |true,false  |                            デフォルトフォームウィジェット:CheckboxInput
+|NullBooleanField    |NULL,true,false  |                          デフォルトフォームウィジェット:NullBooleanSelect
+|DateField           |auto_now=False, auto_now_add=False  |日付 auto_now:,更新時に現在日時 datetime.now
+|auto_now_add        |新規作成時に現在日時datetime.now       |デフォルトフォームウィジェット:TextInput
+DateTimeField       |auto_now=False, auto_now_add=False  |日時    auto_now:更新時に現在日付date.today
+|auto_now_add       |新規作成時に現在日付date.today        |      デフォルトフォームウィジェット:TextInput
+|TimeField           |auto_now=False, auto_now_add=False  |    時間    auto_now:更新時に現在時間
+auto_now_add:新規作成時に現在時間           |デフォルトフォームウィジェット:TextInput
+|DurationField       |時刻の期間|
+|BinaryField         |生のバイナリデータ   |機能制限あり
+|FileField           |upload_to=None, max_length=100 |         ファイルアップロードのフィールド
+|FileFieldを使うにはいくつかのステップを取る|
+|FilePathField      |path=None, match=None, recursive=False, max_length=100
+|ディレクトリ内ファイル名    |CharField
+|ImageField          |upload_to=None, height_field=None, width_field=None, max_length=100|
+|                    |FileField＋画像 |                           ImageFieldを使うにはいくつかのステップを取る
+|SlugField           |max_length=50|
+|                   |スラグ                                   |文字、数字、アンダースコア、またはハイフンのみを含む短いラベル
+|一般的に URL 内で使用
+|URLField            |max_length=200                          |URL    URL のための CharField
+|デフォルトフォームウィジェット:TextInput
+|EmailField          |max_length=254                          |E メールアドレス 値が有効な E メールアドレスかチェックする CharField
+|GenericIPAddressField |protocol='both', unpack_ipv4=False |   IPv4 か IPv6 のアドレス    文字列フォーマット
+|                                                            |デフォルトフォームウィジェット:TextInput
+|UUIDField            |UUID:Universally Unique Identifier |     Python's UUID クラス
+
